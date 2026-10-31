@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FRIDAY — AI Job Scam Detector. Protect students and job seekers with explainable risk assessment and evidence-backed cybersecurity analysis before sharing personal info.">
+  <title>FRIDAY — AI Job Scam Detector</title>
+  
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+
+  <!-- Background Cyber Atmosphere -->
+  <canvas id="friday3dCanvas" class="friday-3d-canvas" aria-hidden="true"></canvas>
+  <div class="bg-grid-overlay" aria-hidden="true"></div>
+  <div class="bg-radial-glow" aria-hidden="true"></div>
+
+  <!-- Custom Cursor Elements -->
+  <div class="custom-cursor" id="customCursor" aria-hidden="true"></div>
+  <div class="custom-cursor-dot" id="customCursorDot" aria-hidden="true"></div>
+
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress-container" aria-hidden="true">
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+  </div>
+
+  <!-- ==========================================================================
+       CINEMATIC INTRO OVERLAY
+       ========================================================================== -->
+  <div class="cinematic-intro" id="introOverlay" role="dialog" aria-modal="true" aria-label="Introductory Animation">
+    <div class="intro-wordmark" aria-label="FRIDAY">
+      <span class="intro-letter">F</span>
+      <span class="intro-letter">R</span>
+      <span class="intro-letter">I</span>
+      <span class="intro-letter">D</span>
+      <span class="intro-letter">A</span>
+      <span class="intro-letter">Y</span>
+    </div>
+    <div class="intro-subtitle" id="introSubtitle">AI Job Scam Detector</div>
+    <button class="intro-skip-btn" id="skipIntroBtn" aria-label="Skip Introduction">SKIP INTRO [ESC]</button>
+  </div>
+
+  <!-- ==========================================================================
+       NAVIGATION BAR
+       ========================================================================== -->
+  <header class="site-nav">
+    <div class="container nav-container">
+      <a href="#" class="nav-logo" aria-label="FRIDAY Home">
+        <span class="nav-logo-badge">F</span>
+        <span class="nav-logo-text">FRIDAY <span class="nav-logo-sub">SEC-OPS</span></span>
+      </a>
+      
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#workspace">Analyze Job</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#risk-signals">Scam Patterns</a></li>
+          <li><a href="#safety-guide">Safety Guide</a></li>
+        </ul>
+      </nav>
+
+      <a href="#workspace" class="nav-cta-btn">Launch Scanner</a>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       HERO SECTION
+       ========================================================================== -->
+  <main id="main-content">
+    <section class="hero-section" id="hero">
+      <div class="container hero-grid">
+        <div class="hero-text-content">
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            <span>NEXT-GEN RECRUITMENT DEFENSE SYSTEM</span>
+          </div>
+          <h1 class="hero-title">
+            Shield Your Career From <br>
+            <span class="hero-title-gradient">Deceptive Job Offers.</span>
+          </h1>
+          <p class="hero-description">
+            Students and job seekers lose millions annually to fake remote jobs, check-cashing rings, and data harvesting. 
+            FRIDAY performs multi-signal behavioral analysis using the Gemini API to detect scams before you share private information.
+          </p>
+          <div class="hero-actions">
+            <a href="#workspace" class="btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              <span>Scan Suspicious Offer</span>
+            </a>
+            <a href="#how-it-works" class="btn-secondary">
+              <span>View Detection Logic</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Terminal Preview -->
+        <div class="hero-visual" aria-hidden="true">
+          <div class="terminal-card">
+            <div class="terminal-header">
+              <div class="dot red"></div>
+              <div class="dot yellow"></div>
+              <div class="dot green"></div>
+              <div class="terminal-title">friday-sec-agent v1.0.0 --live-monitor</div>
+            </div>
+            <div class="terminal-body">
+              <div class="term-row">
+                <span class="term-prefix">&gt;</span>
+                <span class="term-text">SCANNING INCOMING OFFER...</span>
+              </div>
+              <div class="term-row">
+                <span class="term-prefix">&gt;</span>
+                <span class="term-text">Channel: Telegram (@apex_recruiter)</span>
+                <span class="term-flag">FLAGGED</span>
+              </div>
+              <div class="term-row">
+                <span class="term-prefix">&gt;</span>
+                <span class="term-text">Compensation: $85/hr for zero experience</span>
+                <span class="term-flag">ANOMALY</span>
+              </div>
+              <div class="term-row">
+                <span class="term-prefix">&gt;</span>
+                <span class="term-text">Equipment: $3,500 check deposit requested</span>
+                <span class="term-flag">CRITICAL</span>
+              </div>
+              <div class="term-row">
+                <span class="term-prefix">&gt;</span>
+                <span class="term-text">Domain Match: Gmail free tier (not corporate)</span>
+                <span class="term-flag">FAILED</span>
+              </div>
+              <div class="term-row" style="margin-top: 0.5rem;">
+                <span class="term-prefix">&gt;</span>
+                <span class="term-text" style="color: #ef4444; font-weight: bold;">ASSESSMENT: VERY HIGH RISK (Score: 85/100)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         JOB ANALYSIS WORKSPACE
+         ========================================================================== -->
+    <section class="workspace-section" id="workspace">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Cybersecurity Workspace</div>
+          <h2 class="section-title">Job Offer Threat Analyzer</h2>
+          <p class="section-subtitle">
+            Paste any job description, unsolicited recruiter message, or email offer to generate an explainable risk report.
+          </p>
+        </div>
+
+        <div class="analyzer-card">
+          <!-- Sample Loaders for Quick Hackathon Testing -->
+          <div class="sample-pills">
+            <span class="sample-pills-label">Quick Test Scenarios:</span>
+            <button type="button" class="sample-btn" onclick="fillSample('scam')">🚨 Urgent Equipment Scam</button>
+            <button type="button" class="sample-btn" onclick="fillSample('task')">⚠️ Task Optimization App Scam</button>
+            <button type="button" class="sample-btn" onclick="fillSample('legit')">✅ Legitimate Software Role</button>
+          </div>
+
+          <!-- Dynamic Error Alert -->
+          <div class="error-alert" id="errorAlert" role="alert"></div>
+
+          <!-- Input Form -->
+          <form id="scamForm" novalidate>
+            <div class="form-group">
+              <label for="jobDescInput" class="form-label">
+                <span>Job Description, Recruiter Message, or Offer Letter <span class="label-req">*</span></span>
+                <span class="char-counter" id="charCounter">0 / 20,000 characters</span>
+              </label>
+              <textarea 
+                id="jobDescInput" 
+                class="form-textarea" 
+                placeholder="Paste the complete job post, email body, or chat conversation here (e.g. 'We selected you for $75/hr data entry, message HR on Telegram...')"
+                required
+                minlength="20"
+                maxlength="20000"
+              ></textarea>
+            </div>
+
+            <!-- Optional Context Fields -->
+            <div class="form-optional-grid">
+              <div class="form-group">
+                <label for="companyInput" class="form-label">Company Name (Optional)</label>
+                <input type="text" id="companyInput" class="form-input" placeholder="e.g. Acme Tech Solutions">
+              </div>
+              <div class="form-group">
+                <label for="jobTitleInput" class="form-label">Job Title (Optional)</label>
+                <input type="text" id="jobTitleInput" class="form-input" placeholder="e.g. Remote Junior Analyst">
+              </div>
+              <div class="form-group">
+                <label for="recruiterInput" class="form-label">Recruiter Contact / Email / Chat</label>
+                <input type="text" id="recruiterInput" class="form-input" placeholder="e.g. hr@company.com or @recruiter">
+              </div>
+              <div class="form-group">
+                <label for="jobUrlInput" class="form-label">Job Listing or Website URL</label>
+                <input type="url" id="jobUrlInput" class="form-input" placeholder="https://example.com/careers">
+              </div>
+            </div>
+
+            <!-- Action Bar -->
+            <div class="form-actions">
+              <div class="form-hint">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                <span>Submitted data is processed for analysis and is never stored or shared.</span>
+              </div>
+              <button type="submit" class="submit-btn" id="submitBtn">
+                <span class="spinner" id="btnSpinner"></span>
+                <span id="btnText">Analyze for Scam Indicators</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         RESULTS DASHBOARD (Dynamically Shown)
+         ========================================================================== -->
+    <section class="results-section" id="resultsSection" aria-live="polite">
+      <div class="container">
+        <div class="results-card">
+          <!-- Risk Gauge & Executive Summary -->
+          <div class="results-hero-grid">
+            <div class="score-dial-box">
+              <svg class="gauge-svg" viewBox="0 0 160 160">
+                <circle class="gauge-bg" cx="80" cy="80" r="70"></circle>
+                <circle class="gauge-fill" id="scoreGaugeFill" cx="80" cy="80" r="70"></circle>
+              </svg>
+              <div class="score-center-text">
+                <div class="score-number" id="scoreNumber">0</div>
+                <div class="score-total">RISK SCORE</div>
+              </div>
+              <div class="risk-badge" id="riskBadge">Pending</div>
+            </div>
+
+            <div class="results-summary-content">
+              <h3>Executive Analysis Summary</h3>
+              <p id="execSummary">Awaiting input evaluation...</p>
+              <div class="results-meta-row">
+                <span class="meta-pill" id="metaModePill">⚡ AI Intelligence Engine</span>
+                <span class="meta-pill">Behavioral Evidence-Based</span>
+                <span class="meta-pill">Non-Probabilistic Scoring</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section: Specific Evidence Signals Detected -->
+          <div class="results-subhead">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <span>Identified Behavioral Warnings &amp; Evidence</span>
+          </div>
+          <div class="evidence-grid" id="evidenceGrid">
+            <!-- Dynamically populated evidence cards -->
+          </div>
+
+          <!-- Two Column: Positive Signals & Missing Info -->
+          <div class="details-two-col">
+            <div class="detail-panel">
+              <h4 style="color: #10b981;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>Reassuring / Normal Patterns</span>
+              </h4>
+              <ul class="detail-list" id="positiveList">
+                <!-- Dynamically populated -->
+              </ul>
+            </div>
+
+            <div class="detail-panel">
+              <h4 style="color: #f59e0b;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <span>Unverified / Missing Information</span>
+              </h4>
+              <ul class="detail-list" id="missingList">
+                <!-- Dynamically populated -->
+              </ul>
+            </div>
+          </div>
+
+          <!-- Section: Score Calculation Breakdown -->
+          <div class="results-subhead">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            <span>Explainable Scoring Breakdown</span>
+          </div>
+          <table class="breakdown-table">
+            <thead>
+              <tr>
+                <th>Risk Factor</th>
+                <th>Observed Rationale</th>
+                <th>Points Added</th>
+              </tr>
+            </thead>
+            <tbody id="breakdownTableBody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+
+          <!-- Section: Actionable Next Steps -->
+          <div class="recommendations-box">
+            <h4 style="color: #fff; font-family: var(--font-mono); font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span>Recommended Next Steps Before Taking Action</span>
+            </h4>
+            <ul class="rec-list" id="recList">
+              <!-- Dynamically populated -->
+            </ul>
+          </div>
+
+          <!-- Section: Transparency & Limitations Notice -->
+          <div class="transparency-banner">
+            <strong>Trust &amp; Transparency Notice:</strong>
+            <span id="transparencyText">Assessment in progress...</span>
+          </div>
+
+          <!-- Results Actions Bar -->
+          <div class="results-action-bar">
+            <button type="button" class="btn-primary" id="copyBtn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>Copy Full Assessment</span>
+            </button>
+            <button type="button" class="btn-secondary" id="resetBtn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+              <span>Analyze Another Opportunity</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         HOW IT WORKS SECTION
+         ========================================================================== -->
+    <section class="info-section" id="how-it-works">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Architecture &amp; Methodology</div>
+          <h2 class="section-title">How FRIDAY Detects Scams</h2>
+          <p class="section-subtitle">
+            Unlike blunt blacklists that fail against new fake companies, FRIDAY combines behavioral linguistics, known fraud vectors, and the Gemini API.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-num-badge">01 // INGESTION</div>
+            <h3>Text Normalization</h3>
+            <p>Pasted job descriptions, emails, and recruiter messages are sanitized, stripped of script tags, and extracted into behavioral vectors.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num-badge">02 // PATTERN MATCHING</div>
+            <h3>Multi-Vector Analysis</h3>
+            <p>The text is cross-referenced against fraud vectors: payment requests, fake check equipment scams, encrypted messaging pivots, and wage-to-skill disparity.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num-badge">03 // GEMINI REASONING</div>
+            <h3>Cognitive Assessment</h3>
+            <p>Gemini 2.5 performs deep contextual reasoning, isolating exact quotes, identifying contradictions, and balancing positive corporate signals.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num-badge">04 // EXPLAINABLE REPORT</div>
+            <h3>Actionable Defense</h3>
+            <p>The candidate receives an explainable 0–100 risk score, an itemized evidence breakdown, and clear safety steps before any harm occurs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         RISK SIGNALS / SCAM PATTERNS
+         ========================================================================== -->
+    <section class="info-section" id="risk-signals">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Cyber Intelligence Catalog</div>
+          <h2 class="section-title">Common Employment Scam Vectors</h2>
+          <p class="section-subtitle">
+            Learn the standard tactics cybercriminals and fake recruiters deploy against students and job seekers.
+          </p>
+        </div>
+
+        <div class="signals-grid">
+          <div class="signal-category-card">
+            <div class="signal-icon-header">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8l-8 8"/><path d="M12 18V6"/></svg>
+              <h3>Upfront Fees &amp; Training</h3>
+            </div>
+            <p>Demands for "background check fees", "training certification fees", or "onboarding deposits". Legitimate employers pay you—never the other way around.</p>
+          </div>
+
+          <div class="signal-category-card">
+            <div class="signal-icon-header">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 15h0M2 9.5h20"/></svg>
+              <h3>Fake Check Equipment Scam</h3>
+            </div>
+            <p>The "employer" sends a counterfeit electronic check to purchase a home office laptop from an "approved vendor". When the check bounces, you lose real money.</p>
+          </div>
+
+          <div class="signal-category-card">
+            <div class="signal-icon-header">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              <h3>Telegram / WhatsApp Pivots</h3>
+            </div>
+            <p>Interview requests conducted exclusively over personal messaging apps or encrypted chats without video or verifiable corporate emails.</p>
+          </div>
+
+          <div class="signal-category-card">
+            <div class="signal-icon-header">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              <h3>Unrealistic Compensation</h3>
+            </div>
+            <p>Promising $60–$90/hr for entry-level data entry, app optimization, or envelope stuffing without rigorous technical or portfolio evaluation.</p>
+          </div>
+
+          <div class="signal-category-card">
+            <div class="signal-icon-header">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <h3>Premature Identity Theft</h3>
+            </div>
+            <p>Soliciting Social Security Numbers, banking routing details, passport copies, or crypto addresses before formal written offers and contract signing.</p>
+          </div>
+
+          <div class="signal-category-card">
+            <div class="signal-icon-header">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#eab308" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <h3>Urgency &amp; Pressure Tactics</h3>
+            </div>
+            <p>"Hired immediately with no interview", "Start within 2 hours", or high-pressure tactics engineered to bypass normal background scrutiny.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SAFETY GUIDANCE SECTION
+         ========================================================================== -->
+    <section class="info-section" id="safety-guide">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Candidate Defense Checklist</div>
+          <h2 class="section-title">Golden Rules of Job Safety</h2>
+          <p class="section-subtitle">
+            Follow these baseline cybersecurity practices to protect your identity, bank account, and time.
+          </p>
+        </div>
+
+        <div class="safety-grid">
+          <div class="safety-card">
+            <h3>1. Check Corporate Domains</h3>
+            <p>Legitimate recruiters contact you from official corporate domains (e.g. <code>recruiter@google.com</code>), not generic <code>gmail.com</code> or <code>outlook.com</code> accounts.</p>
+          </div>
+          <div class="safety-card">
+            <h3>2. Verify on Careers Page</h3>
+            <p>Navigate directly to the employer's official website without clicking links in unsolicited messages. Confirm the exact Job ID is officially open.</p>
+          </div>
+          <div class="safety-card">
+            <h3>3. Never Accept Check For Equipment</h3>
+            <p>Real employers provide pre-configured equipment directly from corporate IT or a trusted vendor. They never ask you to deposit a check and wire surplus funds.</p>
+          </div>
+          <div class="safety-card">
+            <h3>4. Insist on Face-to-Face Video</h3>
+            <p>Professional organizations conduct interviews via Microsoft Teams, Google Meet, or Zoom with camera on. Never accept a text-only interview on Telegram.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4>FRIDAY // AI Job Scam Detector</h4>
+          <p>
+            An AI-driven cybersecurity screening platform designed to safeguard students, fresh graduates, and career changers from deceptive employment practices.
+          </p>
+        </div>
+        <div class="footer-links-col">
+          <h5>Navigation</h5>
+          <ul>
+            <li><a href="#workspace">Job Scanner</a></li>
+            <li><a href="#how-it-works">Detection Architecture</a></li>
+            <li><a href="#risk-signals">Scam Indicators</a></li>
+            <li><a href="#safety-guide">Safety Guidelines</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-col">
+          <h5>Transparency</h5>
+          <ul>
+            <li><a href="#how-it-works">Scoring Methodology</a></li>
+            <li><a href="https://ai.google.dev/" target="_blank" rel="noopener">Google Gemini API</a></li>
+            <li><a href="https://fastapi.tiangolo.com/" target="_blank" rel="noopener">FastAPI Backend</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-disclaimer">
+        <div>
+          &copy; 2026 FRIDAY Project. Built for Hackathon demonstration.
+        </div>
+        <div style="font-size: 0.8rem; color: var(--text-muted); max-width: 650px;">
+          <strong>Disclaimer:</strong> FRIDAY is an initial screening advisory tool. Scores and insights are based on textual pattern analysis and AI interpretation. They do not constitute formal legal verification or guarantee complete legitimacy or fraud.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Three.js (r128) for Cinematic 3D Scroll-Responsive Background -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- Main Application Script -->
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
+
